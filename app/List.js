@@ -6,7 +6,7 @@ module.exports = React.createClass({
     let listItems =  this.props.items.map((item, index) => {
       return (
         <li key = {index+"str"}  className = "list-group-item" style = {this.styles.listGroup}>
-          <span style={this.styles.todoItem}>
+          <span style={this.styles.todoItem} onClick = {this.props.remove.bind(null, index)}>
           {item}
           </span>
           <span style = {this.styles.removeItem} onClick = {this.props.remove.bind(null, index)}>
@@ -30,20 +30,21 @@ module.exports = React.createClass({
     listGroup:{
       margin:'5px 0',
       borderRadius:5,
-      position:'relative'
+      position:'relative',
+      display:'inline-block'
     },
     removeItem:{
-      fontSize:20,
-      float:'left',
+      fontSize:5,
       position:'absolute',
-      top:-1,
-      left:0,
+      top:-3,
+      right:-5,
       cursor:"pointer",
       color:"rgb(222,79,79)"
     },
     todoItem:{
       paddingLeft:20,
-      fontSize:17
+      fontSize:17,
+      display:'inline-block'
     }
   }
 })
