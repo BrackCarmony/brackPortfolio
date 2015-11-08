@@ -57,8 +57,8 @@
 	var BubbleChart = __webpack_require__(/*! ./components/BubbleChart */ 162);
 	var D3VerticleDotDistribution = __webpack_require__(/*! ./components/D3VerticleDotDistribution */ 164);
 	var DCube = __webpack_require__(/*! ./components/DCube */ 165);
-	var About = __webpack_require__(/*! ./components/About */ 166);
-	var Projects = __webpack_require__(/*! ./components/Projects */ 167);
+	var About = __webpack_require__(/*! ./components/About */ 168);
+	var Projects = __webpack_require__(/*! ./components/Projects */ 169);
 	
 	var side = 0;
 	
@@ -131,6 +131,11 @@
 	            "div",
 	            null,
 	            "6"
+	          ),
+	          React.createElement(
+	            "div",
+	            null,
+	            " I be a bunch of text "
 	          )
 	        )
 	      )
@@ -20544,7 +20549,8 @@
 	'use strict';
 	
 	var React = __webpack_require__(/*! react */ 1);
-	var _ = __webpack_require__(/*! underscore */ 168);
+	var _ = __webpack_require__(/*! underscore */ 166);
+	var Card = __webpack_require__(/*! ./Card */ 167);
 	module.exports = React.createClass({
 	  displayName: 'exports',
 	
@@ -20578,13 +20584,26 @@
 	  faces: function faces() {
 	
 	    var temp = [];
-	    for (var i = 0; i < 6; i++) {
-	      temp.push(React.createElement(
-	        'div',
-	        { key: 'face' + i, style: this.styles['face' + (i + 1)] },
-	        ' ',
-	        this.props.children[i]
-	      ));
+	    for (var i = 0; i < this.props.children.length; i++) {
+	      if (i < 6) {
+	        temp.push(React.createElement(
+	          'div',
+	          { key: 'face' + i, style: this.styles['face' + (i + 1)] },
+	          ' ',
+	          this.props.children[i]
+	        ));
+	      } else {
+	        temp.push(React.createElement(
+	          'div',
+	          { key: 'card' + i },
+	          React.createElement(
+	            Card,
+	            null,
+	            ' ',
+	            this.props.children[i]
+	          )
+	        ));
+	      }
 	    }
 	    return temp;
 	  },
@@ -20633,78 +20652,6 @@
 
 /***/ },
 /* 166 */
-/*!*********************************!*\
-  !*** ./app/components/About.js ***!
-  \*********************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	var React = __webpack_require__(/*! react */ 1);
-	
-	module.exports = React.createClass({
-	  displayName: 'exports',
-	
-	  render: function render() {
-	    return React.createElement(
-	      'div',
-	      null,
-	      React.createElement(
-	        'h1',
-	        { style: this.styles.center },
-	        'Brack Carmony'
-	      ),
-	      React.createElement('img', { style: this.styles.image, src: 'images/square.jpg' }),
-	      React.createElement(
-	        'div',
-	        { style: this.styles.center },
-	        'Basic Text'
-	      )
-	    );
-	  },
-	  styles: {
-	    image: {
-	      width: '50%',
-	      margin: 'auto',
-	      display: 'block'
-	    },
-	    center: {
-	      textAlign: 'center'
-	    }
-	  }
-	});
-
-/***/ },
-/* 167 */
-/*!************************************!*\
-  !*** ./app/components/Projects.js ***!
-  \************************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	var React = __webpack_require__(/*! react */ 1);
-	
-	module.exports = React.createClass({
-	  displayName: 'exports',
-	
-	  render: function render() {
-	    return React.createElement('div', null);
-	  },
-	  styles: {
-	    image: {
-	      width: '50%',
-	      margin: 'auto',
-	      display: 'block'
-	    },
-	    center: {
-	      textAlign: 'center'
-	    }
-	  }
-	});
-
-/***/ },
-/* 168 */
 /*!************************************!*\
   !*** ./~/underscore/underscore.js ***!
   \************************************/
@@ -22275,6 +22222,118 @@
 	    }.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 	  }
 	}).call(undefined);
+
+/***/ },
+/* 167 */
+/*!********************************!*\
+  !*** ./app/components/Card.js ***!
+  \********************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var React = __webpack_require__(/*! react */ 1);
+	
+	module.exports = React.createClass({
+	  displayName: 'exports',
+	
+	  getInitialState: function getInitialState() {
+	    var tempState = {
+	      xTranslate: Math.random() * 400 - 200,
+	      yTranslate: Math.random() * 400 - 200,
+	      zTranslate: Math.random() * 400 - 200,
+	      xRotate: Math.floor(Math.random() * 360) + 'deg',
+	      yRotate: Math.floor(Math.random() * 360) + 'deg',
+	      zRotate: Math.floor(Math.random() * 360) + 'deg'
+	    };
+	    //tempState.transform = "translate3d(" + 12 +"," + 13 + "," + 14+ ")"
+	    return tempState;
+	  },
+	  render: function render() {
+	    return React.createElement(
+	      'div',
+	      { style: {
+	          display: 'block',
+	          position: 'absolute',
+	          backfaceVisibility: 'visible' //,
+	          //transform:this.state.transform
+	        } },
+	      this.props.children
+	    );
+	  }
+	});
+
+/***/ },
+/* 168 */
+/*!*********************************!*\
+  !*** ./app/components/About.js ***!
+  \*********************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var React = __webpack_require__(/*! react */ 1);
+	
+	module.exports = React.createClass({
+	  displayName: 'exports',
+	
+	  render: function render() {
+	    return React.createElement(
+	      'div',
+	      null,
+	      React.createElement(
+	        'h1',
+	        { style: this.styles.center },
+	        'Brack Carmony'
+	      ),
+	      React.createElement('img', { style: this.styles.image, src: 'images/square.jpg' }),
+	      React.createElement(
+	        'div',
+	        { style: this.styles.center },
+	        'Basic Text'
+	      )
+	    );
+	  },
+	  styles: {
+	    image: {
+	      width: '50%',
+	      margin: 'auto',
+	      display: 'block'
+	    },
+	    center: {
+	      textAlign: 'center'
+	    }
+	  }
+	});
+
+/***/ },
+/* 169 */
+/*!************************************!*\
+  !*** ./app/components/Projects.js ***!
+  \************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var React = __webpack_require__(/*! react */ 1);
+	
+	module.exports = React.createClass({
+	  displayName: 'exports',
+	
+	  render: function render() {
+	    return React.createElement('div', null);
+	  },
+	  styles: {
+	    image: {
+	      width: '50%',
+	      margin: 'auto',
+	      display: 'block'
+	    },
+	    center: {
+	      textAlign: 'center'
+	    }
+	  }
+	});
 
 /***/ }
 /******/ ]);

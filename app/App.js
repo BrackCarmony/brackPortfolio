@@ -35,6 +35,7 @@ const App = React.createClass({
           <div>4</div>
           <div>5</div>
           <div>6</div>
+          <div> I be a bunch of text </div>
         </DCube>
       </div>
        </div>)

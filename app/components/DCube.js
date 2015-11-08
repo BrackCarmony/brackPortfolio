@@ -1,5 +1,6 @@
 const React = require('react');
 const _ = require('underscore');
+const Card = require('./Card');
 module.exports = React.createClass({
 
   getDefaultProps(){
@@ -31,8 +32,12 @@ module.exports = React.createClass({
   faces(){
 
       let temp = []
-      for(let i=0;i<6;i++){
-        temp.push(<div key = {'face'+i} style = {this.styles['face'+(i+1)]}> {this.props.children[i]}</div>)
+      for(let i=0;i<this.props.children.length;i++){
+        if(i<6){
+          temp.push(<div key = {'face'+i} style = {this.styles['face'+(i+1)]}> {this.props.children[i]}</div>)
+        }else{
+          temp.push(<div key = {'card'+i}><Card> {this.props.children[i]}</Card></div>)
+        }
       }
       return temp;
 
