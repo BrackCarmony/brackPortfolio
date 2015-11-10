@@ -114,29 +114,115 @@
 	        React.createElement(
 	          DCube,
 	          { selected: this.state.selectedFace },
-	          React.createElement(About, null),
-	          React.createElement(ListContainer, null),
-	          React.createElement(Projects, null),
+	          React.createElement("div", null),
+	          React.createElement("div", null),
+	          React.createElement("div", null),
+	          React.createElement("div", null),
+	          React.createElement("div", null),
+	          React.createElement("div", null),
+	          React.createElement("img", { src: "http://lorempixel.com/50/50" }),
+	          React.createElement("img", { src: "http://lorempixel.com/50/51" }),
+	          React.createElement("img", { src: "http://lorempixel.com/50/52" }),
+	          React.createElement("img", { src: "http://lorempixel.com/50/53" }),
+	          React.createElement("img", { src: "http://lorempixel.com/50/54" }),
+	          React.createElement("img", { src: "http://lorempixel.com/50/55" }),
+	          React.createElement("img", { src: "http://lorempixel.com/51/50" }),
+	          React.createElement("img", { src: "http://lorempixel.com/51/51" }),
+	          React.createElement("img", { src: "http://lorempixel.com/51/52" }),
+	          React.createElement("img", { src: "http://lorempixel.com/51/53" }),
+	          React.createElement("img", { src: "http://lorempixel.com/51/54" }),
+	          React.createElement("img", { src: "http://lorempixel.com/52/50" }),
+	          React.createElement("img", { src: "http://lorempixel.com/52/51" }),
+	          React.createElement("img", { src: "http://lorempixel.com/52/52" }),
+	          React.createElement("img", { src: "http://lorempixel.com/52/53" }),
+	          React.createElement("img", { src: "http://lorempixel.com/52/54" }),
+	          React.createElement("img", { src: "http://lorempixel.com/53/55" }),
 	          React.createElement(
 	            "div",
 	            null,
-	            "4"
+	            "A"
 	          ),
 	          React.createElement(
 	            "div",
 	            null,
-	            "5"
+	            "B"
 	          ),
 	          React.createElement(
 	            "div",
 	            null,
-	            "6"
+	            "C"
 	          ),
 	          React.createElement(
 	            "div",
 	            null,
-	            " I be a bunch of text "
-	          )
+	            "D"
+	          ),
+	          React.createElement(
+	            "div",
+	            null,
+	            "E"
+	          ),
+	          React.createElement(
+	            "div",
+	            null,
+	            "F"
+	          ),
+	          React.createElement(
+	            "div",
+	            null,
+	            "G"
+	          ),
+	          React.createElement(
+	            "div",
+	            null,
+	            "H"
+	          ),
+	          React.createElement(
+	            "div",
+	            null,
+	            "I"
+	          ),
+	          React.createElement(
+	            "div",
+	            null,
+	            "J"
+	          ),
+	          React.createElement(
+	            "div",
+	            null,
+	            "K"
+	          ),
+	          React.createElement(
+	            "div",
+	            null,
+	            "L"
+	          ),
+	          React.createElement(
+	            "div",
+	            null,
+	            "M"
+	          ),
+	          React.createElement(
+	            "div",
+	            null,
+	            "N"
+	          ),
+	          React.createElement(
+	            "div",
+	            null,
+	            "O"
+	          ),
+	          React.createElement(
+	            "div",
+	            null,
+	            "P"
+	          ),
+	          React.createElement(
+	            "div",
+	            null,
+	            "Q"
+	          ),
+	          React.createElement("img", { style: { width: 100 }, src: "http://wdl.tmimgcdn.com/img_articles/17101/step2.gif" })
 	        )
 	      )
 	    );
@@ -160,6 +246,9 @@
 	});
 	
 	ReactDOM.render(React.createElement(App, null), document.getElementById('app'));
+	/*<About />
+	<ListContainer />
+	<Projects />*/
 
 /***/ },
 /* 1 */
@@ -20576,8 +20665,7 @@
 	      React.createElement(
 	        'div',
 	        { style: _.extend(this.styles.cube, this.styles.selectFace[this.props.selected]) },
-	        this.faces(),
-	        React.createElement('img', { style: this.styles.flat, src: 'images/square.jpg' })
+	        this.faces()
 	      )
 	    );
 	  },
@@ -22234,29 +22322,81 @@
 	
 	var React = __webpack_require__(/*! react */ 1);
 	
+	var SetIntervalMixin = {
+	  componentWillMount: function componentWillMount() {
+	    this.intervals = [];
+	  },
+	  setInterval: (function (_setInterval) {
+	    function setInterval() {
+	      return _setInterval.apply(this, arguments);
+	    }
+	
+	    setInterval.toString = function () {
+	      return _setInterval.toString();
+	    };
+	
+	    return setInterval;
+	  })(function () {
+	    this.intervals.push(setInterval.apply(null, arguments));
+	  }),
+	  componentWillUnmount: function componentWillUnmount() {
+	    this.intervals.forEach(clearInterval);
+	  }
+	};
+	
 	module.exports = React.createClass({
 	  displayName: 'exports',
 	
+	  mixins: [SetIntervalMixin],
 	  getInitialState: function getInitialState() {
 	    var tempState = {
 	      xTranslate: Math.random() * 400 - 200,
 	      yTranslate: Math.random() * 400 - 200,
 	      zTranslate: Math.random() * 400 - 200,
-	      xRotate: Math.floor(Math.random() * 360) + 'deg',
-	      yRotate: Math.floor(Math.random() * 360) + 'deg',
-	      zRotate: Math.floor(Math.random() * 360) + 'deg'
+	      xRotate: Math.floor(Math.random() * 360),
+	      yRotate: Math.floor(Math.random() * 360),
+	      zRotate: Math.floor(Math.random() * 360)
 	    };
+	    //transform:'translateX(300px) translateY(300px) rotateX( 45deg ) rotateY(32deg) rotateZ(87deg) translateZ(250px)'},
 	    //tempState.transform = "translate3d(" + 12 +"," + 13 + "," + 14+ ")"
+	    tempState.transform = 'translateX(300px) translateY(300px) rotateX(' + tempState.xRotate + 'deg) rotateY(' + tempState.yRotate + 'deg) rotateZ(' + tempState.zRotate + 'deg) translateZ(250px)';
 	    return tempState;
 	  },
+	  componentDidMount: function componentDidMount() {
+	
+	    this.setInterval(this.moveCard, 3000); // Call a method on the mixin
+	    console.log("Component Did Mount");
+	    console.log(this.state.transform);
+	    this.moveCard();
+	  },
+	  moveCard: function moveCard() {
+	
+	    var xRotate = this.state.xRotate + Math.random() * 200;
+	    var yRotate = this.state.yRotate + Math.random() * 200;
+	    var zRotate = this.state.zRotate + Math.random() * 200;
+	    this.setState({
+	      transform: 'translateX(300px) translateY(300px) rotateX(' + xRotate + 'deg) rotateY(' + yRotate + 'deg) rotateZ(' + zRotate + 'deg) translateZ(250px)',
+	      xRotate: xRotate,
+	      yRotate: yRotate,
+	      zRotate: zRotate
+	    });
+	  },
 	  render: function render() {
+	    console.log(this.state.transform);
 	    return React.createElement(
 	      'div',
 	      { style: {
+	          margin: '0px',
+	          boxSizing: 'border-box',
 	          display: 'block',
 	          position: 'absolute',
-	          backfaceVisibility: 'visible' //,
-	          //transform:this.state.transform
+	          backfaceVisibility: 'visible',
+	          display: 'block',
+	          position: 'absolute',
+	          backfaceVisibility: 'visible',
+	          transition: 'transform 9s',
+	          transitionTimingFunction: 'linear',
+	          transform: this.state.transform
 	        } },
 	      this.props.children
 	    );

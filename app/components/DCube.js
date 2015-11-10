@@ -23,7 +23,6 @@ module.exports = React.createClass({
       <div style = {this.styles.scene}>
         <div style = {_.extend(this.styles.cube, this.styles.selectFace[this.props.selected])}>
           {this.faces()}
-          <img style = {this.styles.flat} src = "images/square.jpg"/>
         </div>
       </div>
 
