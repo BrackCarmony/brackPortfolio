@@ -64,9 +64,10 @@ module.exports = React.createClass({
     boxSizing:'border-box',
     display: 'block',
     position: 'absolute',
-    border: '2px solid black',
+    border: '2px solid blue',
+    //borderRadius:'50%',
     backfaceVisibility:'visible',
-    backgroundColor:'rgba(224,238,238,.7)'
+    backgroundColor:'rgba(124,138,238,.05)'
   },
   flat: {height:'50px', width:'50px'},
   face1: { transform: 'rotateY(   0deg ) translateZ(300px) ' },

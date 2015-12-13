@@ -36,14 +36,16 @@ const App = React.createClass({
           <div></div>
           <div></div>
           <div></div>
-          <img src = "http://lorempixel.com/50/50"/>
-          <img src = "http://lorempixel.com/50/51"/>
-          <img src = "http://lorempixel.com/50/52"/>
-          <img src = "http://lorempixel.com/50/53"/>
-          <img src = "http://lorempixel.com/50/54"/>
-          <img src = "http://lorempixel.com/50/55"/>
-          <img src = "http://lorempixel.com/51/50"/>
-          <img src = "http://lorempixel.com/51/51"/>
+          <img style = {{'maxWidth':'60px','maxHeight':'60px'}} src = "images/angular-icon.svg"/>
+          <img style = {{'maxWidth':'60px','maxHeight':'60px'}} src = "images/ember-tomster.svg"/>
+          <img style = {{'maxWidth':'60px','maxHeight':'60px'}} src = "images/firebase.svg"/>
+          <img style = {{'maxWidth':'60px','maxHeight':'60px'}} src = "images/nodejs-icon.svg"/>
+          <img style = {{'maxWidth':'60px','maxHeight':'60px'}} src = "images/Logo_D3.svg.png"/>
+          <img style = {{'maxWidth':'60px','maxHeight':'60px'}} src = "images/square.jpg"/>
+          <img style = {{'maxWidth':'60px','maxHeight':'60px'}} src = "images/react.svg"/>
+          <img style = {{'maxWidth':'60px','maxHeight':'60px'}} src = "images/javascript.svg"/>
+          <img style = {{'maxWidth':'60px','maxHeight':'60px'}} src = "images/visual-basic.svg"/>
+          <img style = {{'maxWidth':'60px','maxHeight':'60px'}} src = "images/java-4.svg"/>
           <img src = "http://lorempixel.com/51/52"/>
           <img src = "http://lorempixel.com/51/53"/>
           <img src = "http://lorempixel.com/51/54"/>
@@ -53,25 +55,18 @@ const App = React.createClass({
           <img src = "http://lorempixel.com/52/53"/>
           <img src = "http://lorempixel.com/52/54"/>
           <img src = "http://lorempixel.com/53/55"/>
-          <div>A</div>
-          <div>B</div>
-          <div>C</div>
-          <div>D</div>
-          <div>E</div>
-          <div>F</div>
-          <div>G</div>
-          <div>H</div>
-          <div>I</div>
-          <div>J</div>
-          <div>K</div>
-          <div>L</div>
-          <div>M</div>
-          <div>N</div>
-          <div>O</div>
-          <div>P</div>
-          <div>Q</div>
-
-          <img style = {{width:100}}  src = "http://wdl.tmimgcdn.com/img_articles/17101/step2.gif" / >
+          <div>AngularJS</div>
+          <div>Brack</div>
+          <div>Carmony</div>
+          <div>D3</div>
+          <div>Firebase</div>
+          <div>React</div>
+          <div>EmberJS</div>
+          <div>NodeJS</div>
+          <div>C++</div>
+          <div>VBA</div>
+          <div>Java</div>
+          <div>Javascript</div>
         </DCube>
       </div>
        </div>)
@@ -87,7 +82,8 @@ const App = React.createClass({
       flex:1,
       display:"inline",
       cursor:"pointer"
-    }
+    },
+
   },
   randomSide(){
     this.setState({selectedFace: Math.floor(Math.random()*6)})

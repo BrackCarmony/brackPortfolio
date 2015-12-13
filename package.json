@@ -18,5 +18,8 @@
     "react": "^0.14.0",
     "react-dom": "^0.14.0",
     "underscore": "^1.8.3"
+  },
+  "jshintConfig": {
+    "esnext":"true"
   }
 }
