@@ -51,9 +51,9 @@
 	var AddItem = __webpack_require__(158);
 	var List = __webpack_require__(159);
 	var ListContainer = __webpack_require__(160);
-	var DCube = __webpack_require__(165);
-	var About = __webpack_require__(168);
-	var Projects = __webpack_require__(169);
+	var DCube = __webpack_require__(162);
+	var About = __webpack_require__(165);
+	var Projects = __webpack_require__(166);
 
 	var side = 0;
 
@@ -115,7 +115,7 @@
 	          React.createElement("div", null),
 	          React.createElement("div", null),
 	          React.createElement("div", null),
-	          React.createElement("img", { style: { 'maxWidth': '60px', 'maxHeight': '60px' }, src: "images/angular-icon.svg" }),
+	          React.createElement("img", { selected: this.state.selectedFace == 1, style: { 'maxWidth': '60px', 'maxHeight': '60px' }, src: "images/angular-icon.svg" }),
 	          React.createElement("img", { style: { 'maxWidth': '60px', 'maxHeight': '60px' }, src: "images/ember-tomster.svg" }),
 	          React.createElement("img", { style: { 'maxWidth': '60px', 'maxHeight': '60px' }, src: "images/firebase.svg" }),
 	          React.createElement("img", { style: { 'maxWidth': '60px', 'maxHeight': '60px' }, src: "images/nodejs-icon.svg" }),
@@ -20033,17 +20033,14 @@
 	});
 
 /***/ },
-/* 162 */,
-/* 163 */,
-/* 164 */,
-/* 165 */
+/* 162 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var React = __webpack_require__(1);
-	var _ = __webpack_require__(166);
-	var Card = __webpack_require__(167);
+	var _ = __webpack_require__(163);
+	var Card = __webpack_require__(164);
 	module.exports = React.createClass({
 	  displayName: 'exports',
 
@@ -20057,7 +20054,7 @@
 	    for (var i = 1; i <= 6; i++) {
 	      this.styles['face' + i] = _.extend(this.styles['face' + i], this.styles.face);
 	    }
-	    console.log(this.styles);
+	    //console.log(this.styles);
 	  },
 	  componentWillReceiveProps: function componentWillReceiveProps(newProps) {
 	    console.log('New Props', newProps, 'oldProps', this.props);
@@ -20122,10 +20119,10 @@
 	      boxSizing: 'border-box',
 	      display: 'block',
 	      position: 'absolute',
-	      border: '2px solid blue',
+	      border: '0px solid blue',
 	      borderRadius: '15px',
 	      backfaceVisibility: 'visible',
-	      backgroundColor: 'rgba(124,138,238,.05)'
+	      backgroundColor: 'rgba(124,138,238,0)'
 	    },
 	    flat: { height: '50px', width: '50px' },
 	    face1: { transform: 'rotateY(   0deg ) translateZ(300px) ' },
@@ -20144,7 +20141,7 @@
 	});
 
 /***/ },
-/* 166 */
+/* 163 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;//     Underscore.js 1.8.3
@@ -21714,10 +21711,10 @@
 	}).call(undefined);
 
 /***/ },
-/* 167 */
+/* 164 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 
 	var React = __webpack_require__(1);
 
@@ -21740,11 +21737,14 @@
 	  }),
 	  componentWillUnmount: function componentWillUnmount() {
 	    this.intervals.forEach(clearInterval);
+	  },
+	  componentWillReceiveProps: function componentWillReceiveProps(nextProps) {
+	    console.log("Firing state change?", nextProps, this.props);
 	  }
 	};
 
 	module.exports = React.createClass({
-	  displayName: 'exports',
+	  displayName: "exports",
 
 	  mixins: [SetIntervalMixin],
 	  getInitialState: function getInitialState() {
@@ -21754,18 +21754,19 @@
 	      zTranslate: Math.random() * 400 - 200,
 	      xRotate: Math.floor(Math.random() * 360),
 	      yRotate: Math.floor(Math.random() * 360),
-	      zRotate: Math.floor(Math.random() * 360)
+	      zRotate: Math.floor(Math.random() * 360),
+	      height: Math.random() * 50 + 200 + "px"
 	    };
 	    //transform:'translateX(300px) translateY(300px) rotateX( 45deg ) rotateY(32deg) rotateZ(87deg) translateZ(250px)'},
 	    //tempState.transform = "translate3d(" + 12 +"," + 13 + "," + 14+ ")"
-	    tempState.transform = 'translateX(300px) translateY(300px) rotateX(' + tempState.xRotate + 'deg) rotateY(' + tempState.yRotate + 'deg) rotateZ(' + tempState.zRotate + 'deg) translateZ(250px)';
+	    tempState.transform = 'translateX(300px) translateY(300px) rotateX(' + tempState.xRotate + 'deg) rotateY(' + tempState.yRotate + 'deg) rotateZ(' + tempState.zRotate + 'deg) translateZ(' + tempState.height + ')';
 	    return tempState;
 	  },
 	  componentDidMount: function componentDidMount() {
 
 	    this.setInterval(this.moveCard, 3000); // Call a method on the mixin
-	    console.log("Component Did Mount");
-	    console.log(this.state.transform);
+	    //console.log("Component Did Mount");
+	    //console.log(this.state.transform);
 	    this.moveCard();
 	  },
 	  moveCard: function moveCard() {
@@ -21774,16 +21775,16 @@
 	    var yRotate = this.state.yRotate + Math.random() * 200;
 	    var zRotate = this.state.zRotate + Math.random() * 200;
 	    this.setState({
-	      transform: 'translateX(300px) translateY(300px) rotateX(' + xRotate + 'deg) rotateY(' + yRotate + 'deg) rotateZ(' + zRotate + 'deg) translateZ(250px)',
+	      transform: 'translateX(300px) translateY(300px) rotateX(' + xRotate + 'deg) rotateY(' + yRotate + 'deg) rotateZ(' + zRotate + 'deg) translateZ(' + this.state.height + ')',
 	      xRotate: xRotate,
 	      yRotate: yRotate,
 	      zRotate: zRotate
 	    });
 	  },
 	  render: function render() {
-	    console.log(this.state.transform);
+	    //console.log(this.state.transform)
 	    return React.createElement(
-	      'div',
+	      "div",
 	      { style: {
 	          margin: '0px',
 	          boxSizing: 'border-box',
@@ -21803,7 +21804,7 @@
 	});
 
 /***/ },
-/* 168 */
+/* 165 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -21843,7 +21844,7 @@
 	});
 
 /***/ },
-/* 169 */
+/* 166 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';

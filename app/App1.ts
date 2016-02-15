@@ -13,6 +13,7 @@ const App = React.createClass({
   getInitialState(){
     return {
       selectedFace:0
+      
     }
   },
   render (){

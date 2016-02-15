@@ -13,7 +13,7 @@ module.exports = React.createClass({
     }
   },
   makeDots(){
-    console.log(this)
+    //console.log(this)
     if (this.props.points){
       var count = this.props.points.length;
     return (this.props.points.map((item, index) =>

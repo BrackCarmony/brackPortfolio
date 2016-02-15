@@ -13,7 +13,7 @@ module.exports = React.createClass({
     for(let i=1;i<=6;i++){
       this.styles['face'+i] = _.extend(this.styles['face'+i], this.styles.face);
     }
-    console.log(this.styles);
+    //console.log(this.styles);
   },
   componentWillReceiveProps(newProps){
     console.log('New Props', newProps , 'oldProps', this.props)
@@ -64,10 +64,10 @@ module.exports = React.createClass({
     boxSizing:'border-box',
     display: 'block',
     position: 'absolute',
-    border: '2px solid blue',
-    //borderRadius:'50%',
+    border: '0px solid blue',
+    borderRadius:'15px',
     backfaceVisibility:'visible',
-    backgroundColor:'rgba(124,138,238,.05)'
+    backgroundColor:'rgba(124,138,238,0)'
   },
   flat: {height:'50px', width:'50px'},
   face1: { transform: 'rotateY(   0deg ) translateZ(300px) ' },
